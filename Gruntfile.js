@@ -40,15 +40,7 @@ module.exports = function(grunt) {
 		sass: {
 			main: {
 				files: {
-					'css/theme/default.css': 'css/theme/source/default.scss',
-					'css/theme/beige.css': 'css/theme/source/beige.scss',
-					'css/theme/night.css': 'css/theme/source/night.scss',
-					'css/theme/serif.css': 'css/theme/source/serif.scss',
-					'css/theme/simple.css': 'css/theme/source/simple.scss',
-					'css/theme/sky.css': 'css/theme/source/sky.scss',
-					'css/theme/moon.css': 'css/theme/source/moon.scss',
-					'css/theme/solarized.css': 'css/theme/source/solarized.scss',
-					'css/theme/blood.css': 'css/theme/source/blood.scss'
+					'css/theme/beige.css': 'css/theme/source/beige.scss'
 				}
 			}
 		},
@@ -97,13 +89,19 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
-			main: {
-				files: [ 'Gruntfile.js', 'js/reveal.js', 'css/reveal.css' ],
-				tasks: 'default'
-			},
 			theme: {
 				files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
 				tasks: 'themes'
+			},
+			livereload: {
+				options: {
+					livereload: true
+				},
+				files: [
+					'*.html',
+					'js/**/*.js',
+					'css/*.css'
+				]
 			}
 		}
 
@@ -129,7 +127,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
 
 	// Serve presentation locally
-	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
+	grunt.registerTask( 'serve', [ 'themes', 'connect', 'watch' ] );
 
 	// Run tests
 	grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
