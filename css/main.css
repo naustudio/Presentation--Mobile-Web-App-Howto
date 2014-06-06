@@ -11,14 +11,29 @@ button {
  * Demo box
  */
 .presentation .demo {
-	margin-top: 2em;
+	margin-top: 1em;
 }
 
 .presentation pre {
 	tab-size: 4;
-	margin-top: 2em;
+	margin-top: 1em;
 }
 
 .presentation code {
 	font-family: Source Code Pro, Menlo, Monaco, Consolas, monospace;
+}
+
+.presentation .scroll-box {
+	font-size: 0.6em;
+	width: 40%;
+	height: 8em;
+	margin: 0 2%;
+	padding: 0.5em;
+	overflow-y: scroll; /* has to be scroll, not auto */
+	display: inline-block;
+	border: 1px #333 solid;
+}
+
+.presentation .touch {
+	-webkit-overflow-scrolling: touch;
 }

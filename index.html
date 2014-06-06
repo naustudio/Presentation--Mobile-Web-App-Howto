@@ -94,30 +94,13 @@
 					<h2>Touch Interface</h2>
 				</section>
 
-				<section>
-					<h2>Web App Optimization</h2>
-
-					<aside>
-						It's website optimization but with extreme approach.
-					</aside>
-				</section>
-
-				<section>
-					<h2>Real Device Testing</h2>
-				</section>
-
-				<section>
-					<h1>Thank you!</h1>
-					<h3>Any questions?</h3>
-				</section>
-
 				<section id="delayed-click">
 					<h2>300ms Delay</h2>
 					<div class="demo">
 						<button id="delay-btn" class="btn">Default</button> &nbsp; &nbsp;
 						<button id="fastclick-btn" class="btn">FastClick</button>
 					</div>
-					<pre><code data-trim contenteditable class="javascript">
+					<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript">
 $('document').ready(function() {
 	//enable FastClick
 	FastClick.attach(document.body);
@@ -135,6 +118,63 @@ $('document').ready(function() {
 							});
 						});
 					</script>
+				</section>
+
+				<section id="touch-scrolling">
+					<h2>Scroll with momentum</h2>
+					<h3>iOS Overflowed Elements</h3>
+					<div class="demo">
+						<div class="scroll-box no-touch">
+							<h3>Not Smooth</h3>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+						</div>
+
+						<div class="scroll-box touch">
+							<h3>Smooth</h3>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+						</div>
+					</div>
+					<pre><code data-trim contenteditable class="css">.scroll-box {
+	width: 200px;
+	height: 200px;
+	overflow-y: scroll; /* has to be scroll, not auto */
+}
+
+.touch {
+	-webkit-overflow-scrolling: touch;
+}
+</code></pre>
+
+				</section>
+
+				<section>
+					<h2>Web App Optimization</h2>
+
+					<aside>
+						It's website optimization but with extreme approach.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Real Device Testing</h2>
+				</section>
+
+				<section>
+					<h1>Thank you!</h1>
+					<h3>Any questions?</h3>
+				</section>
+
+				<section>
+					<h2></h2>
+				</section>
+
+				<section>
+					<h2>References</h2>
+					<ul>
+						<li>FastClick: TBC</li>
+					</ul>
 				</section>
 
 			</div>
