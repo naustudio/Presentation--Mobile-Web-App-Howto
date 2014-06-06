@@ -1,0 +1,24 @@
+/*!
+ * Custom Styles for THis presentation
+ */
+
+button {
+	font-size: 1em;
+	padding: 0.5em;
+}
+
+/*
+ * Demo box
+ */
+.presentation .demo {
+	margin-top: 2em;
+}
+
+.presentation pre {
+	tab-size: 4;
+	margin-top: 2em;
+}
+
+.presentation code {
+	font-family: Source Code Pro, Menlo, Monaco, Consolas, monospace;
+}

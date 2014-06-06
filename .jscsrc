@@ -9,7 +9,6 @@
 	"disallowKeywords": ["with"],
 	"disallowKeywordsOnNewLine": ["else"],
 	"disallowMixedSpacesAndTabs": true,
-	"disallowTrailingWhitespace": true,
 	"excludeFiles": ["test/data/**"],
 	"requireSpacesInFunctionExpression": {
 		"beforeOpeningCurlyBrace": true
@@ -21,6 +20,5 @@
 		"checkParamNames": true,
 		"requireParamTypes": true
 	},
-	"validateIndentation": "\t",
 	"validateQuoteMarks": "'"
 }

@@ -16,19 +16,41 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="css/main.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="css/highlight-atelier-forest.light.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
+			if ( window.location.search.match( /print-pdf/gi ) ) {
 				var link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
 				link.type = 'text/css';
 				link.href = 'css/print/pdf.css';
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
+
+			/**
+			 * Some Helpers
+			 * @author Thanh Tran
+			 */
+			function $(selector) {
+				return document.querySelectorAll(selector);
+			}
+
+			function $$(selector) {
+				return document.querySelector(selector);
+			}
+
+			function $byId(idSelector) {
+				return document.getElementById(idSelector);
+			}
+
+			//get a shortcut of forEach proto
+			var forEach = Array.prototype.forEach;
+			/*global Reveal, FastClick*/
+
 		</script>
 
 		<!--[if lt IE 9]>
@@ -36,7 +58,7 @@
 		<![endif]-->
 	</head>
 
-	<body>
+	<body class="presentation">
 
 		<div class="reveal">
 
@@ -89,6 +111,32 @@
 					<h3>Any questions?</h3>
 				</section>
 
+				<section id="delayed-click">
+					<h2>300ms Delay</h2>
+					<div class="demo">
+						<button id="delay-btn" class="btn">Default</button> &nbsp; &nbsp;
+						<button id="fastclick-btn" class="btn">FastClick</button>
+					</div>
+					<pre><code data-trim contenteditable class="javascript">
+$('document').ready(function() {
+	//enable FastClick
+	FastClick.attach(document.body);
+
+	document.getElementById('fastclick-btn').addEventListener('click', function(e) {
+		alert( 'Button ' + e.target.textContent + ' is clicked' );
+	});
+});
+					</code></pre>
+
+					<script>
+						forEach.call($('#delayed-click .btn'), function(btn) {
+							btn.addEventListener('click', function(e) {
+								alert('Button ' + e.target.textContent + ' is clicked');
+							});
+						});
+					</script>
+				</section>
+
 			</div>
 
 		</div>
@@ -119,7 +167,12 @@
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					//additional library for presentation
+					{ src: 'lib/js/fastclick.min.js', async: true, callback: function() {
+						// attach only this button to see the different
+						FastClick.attach(document.getElementById('fastclick-btn'));
+					} }
 				]
 			});
 
