@@ -39,17 +39,9 @@
 				return document.querySelectorAll(selector);
 			}
 
-			function $$(selector) {
-				return document.querySelector(selector);
-			}
-
-			function $byId(idSelector) {
-				return document.getElementById(idSelector);
-			}
-
 			//get a shortcut of forEach proto
 			var forEach = Array.prototype.forEach;
-			/*global Reveal, FastClick*/
+			/*global Reveal, FastClick, hljs*/
 
 		</script>
 
@@ -102,7 +94,7 @@
 				</section>
 
 				<section>
-					<h2>Major mobile web rendering engines</h2>
+					<h2>Major Mobile Web Browser</h2>
 					<div class="inline-block">
 						<img src="img/mobile-browsers-stats.png" height="474" width="538" alt="Mobile Browser Stats">
 						<p><small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201305-201405">StatCounter Global Stats - Browser Market Share</a></small></p>
@@ -113,7 +105,7 @@
 				<section>
 					<h1>Principles</h1>
 					<ul>
-						<li class="fragment">HTML5, CSS3</li>
+						<li class="fragment">HTML5 &amp; CSS3</li>
 						<li class="fragment">Responsive Web Design (RWD)</li>
 						<li class="fragment">Touch Interface</li>
 						<li class="fragment">Web App Optimization</li>
@@ -126,26 +118,101 @@
 				</section>
 
 				<section>
-					<h2>HTML5, CSS3</h2>
+					<h2>HTML5 &amp; CSS3</h2>
+					<aside class="notes">
+						Most mobile web browsers are HTML5 capable.<br>
+					</aside>
+				</section>
+
+				<section>
+					<h3>UI &amp; Animation Effects With CSS3</h3>
 					<ul>
-						<li>UI &amp; animation effects with CSS3</li>
-						<li>New HTML5 form inputs</li>
-						<li>Trigger hardware accelerated rendering through CSS3's 3D transform</li>
 						<li></li>
 					</ul>
 					<aside class="notes">
-						Most mobile web browsers are HTML5 capable.<br>
 						CSS3: background and border effects, transition and animation for better interface<br>
+					</aside>
+				</section>
+
+				<section>
+					<h3>New Html5 Form Inputs</h3>
+					<aside class="notes">
 						New HTML5 form inputs cut down the effort to customise component and interaction<br>
 					</aside>
 				</section>
 
 				<section>
-					<h3>Hardware accelerated rendering</h3>
+					<h3>Hardware Accelerated Rendering</h3>
+					<li>HWA rendering through CSS3's 3D transform</li>
 					<p>Demo: <code>position</code> with <code>top/left</code></p>
 					<p>Demo: <code>transform: translate</code></p>
 
 					<p><small>Source: <a href="http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/" target="_blank">Why Moving Elements With Translate() Is Better Than Pos:abs Top/left</a></small></p>
+				</section>
+
+				<section>
+					<h3>HTML5 Device API</h3>
+					<ul>
+						<li>Geo Location</li>
+						<li>Device Orientation (Accelerometer &amp; Compass)</li>
+						<li>Battery Status Events</li>
+						<li>Vibration API</li>
+						<li>Abient Light Events</li>
+						<li>Network Info API (Phonegap</li>
+						<li>...</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Geo Location Example</h4>
+					<div class="demo">
+						<button id="geo-btn">Get My Position</button>
+					</div>
+					<pre><code class="javascript"
+>if ('geolocation' in navigator) {
+    /* geolocation is available */
+    navigator.geolocation.getCurrentPosition(function(position) {
+        alert('Your position: ' + position.coords.latitude + ' - ' + position.coords.longitude);
+    }); //second param is fail handler
+} else {
+    alert('Your browser doesn\'t support Geolocation API');
+}
+					</code></pre>
+					<script>
+						var geoBtn = document.getElementById('geo-btn');
+						geoBtn.addEventListener('click', function() {
+							if ('geolocation' in navigator) {
+								/* geolocation is available */
+								geoBtn.disabled = true;
+								navigator.geolocation.getCurrentPosition(function(position) {
+									alert('Your position: ' + position.coords.latitude + ' - ' + position.coords.longitude);
+									geoBtn.disabled = false;
+								}, function() {
+									console.log('Get position failed');
+									geoBtn.disabled = false;
+								});
+							} else {
+								alert('Your browser doesn\'t support Geolocation API');
+							}
+						});
+					</script>
+				</section>
+
+				<section>
+					<h4>Device Orientation API</h4>
+					<a href="http://girliemac.com/magic8ball/">http://girliemac.com/magic8ball/</a>
+				</section>
+
+				<section>
+					<section>
+						<h3>Mobile Web with HTML5 &amp; CSS3 Quirks</h3>
+					</section>
+					<section>
+						<h4>Text selection</h4>
+					</section>
+					<section>
+						<h4>Tap Highlight</h4>
+					</section>
 				</section>
 
 				<section>
@@ -164,12 +231,12 @@
 					</div>
 					<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript"
 >document.addEventListener('DOMContentLoaded', function() {
-	//enable FastClick
-	FastClick.attach(document.body);
+    //enable FastClick
+    FastClick.attach(document.body);
 
-	document.getElementById('fastclick-btn').addEventListener('click', function(e) {
-		alert( 'Button ' + e.target.textContent + ' is clicked' );
-	});
+    document.getElementById('fastclick-btn').addEventListener('click', function(e) {
+        alert( 'Button ' + e.target.textContent + ' is clicked' );
+    });
 });
 					</code></pre>
 
