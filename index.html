@@ -77,13 +77,17 @@
 					<h2>What is a Mobile Web App?</h2>
 					<h3 style="margin-top: 1em;">An application</h3>
 					<ul>
-						<li>created with Web technology</li>
+						<li>created with <strong>Web technology</strong></li>
 						<li>on handheld form factors (smartphones, tablets)</li>
-						<li>run on mobile web browser or WebView</li>
+						<li>run <strong>on mobile web browser*</strong> or WebView</li>
 						<li>normally having touch interface</li>
-						<li>offline or connected through mobile network or wi-fi</li>
+						<li>offline or online connected through mobile network or wi-fi</li>
 					</ul>
+					<p><small class="fragment">* not include proxy browsers</small></p>
 					<img src="" alt="Photo needed" width="200" height="200">
+					<aside class="notes">
+						Note on proxy browsers: browsers which rely on proxy servers to compress response data for bandwith and normally complex JS is stripped off.
+					</aside>
 				</section>
 
 				<section>
@@ -92,18 +96,29 @@
 						<li><a href="http://example.com">Financial Times Web App</a></li>
 						<li>SCB Breeze Biz</li>
 					</ul>
+					<aside class="notes">
+						Demo how to add bookmark a website / web app to iOS Home screen
+					</aside>
 				</section>
 
 				<section>
 					<h2>Major mobile web rendering engines</h2>
-					<img src="img/mobile-browsers-stats.png" height="474" width="538" alt="Mobile Browser Stats">
-					<p><small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201305-201405">StatCounter Global Stats - Browser Market Share</a></small></p>
+					<div class="inline-block">
+						<img src="img/mobile-browsers-stats.png" height="474" width="538" alt="Mobile Browser Stats">
+						<p><small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201305-201405">StatCounter Global Stats - Browser Market Share</a></small></p>
+					</div>
 
 				</section>
 
 				<section>
 					<h1>Principles</h1>
-
+					<ul>
+						<li class="fragment">HTML5, CSS3</li>
+						<li class="fragment">Responsive Web Design (RWD)</li>
+						<li class="fragment">Touch Interface</li>
+						<li class="fragment">Web App Optimization</li>
+						<li class="fragment">Real Device Testing</li>
+					</ul>
 
 					<aside class="notes">
 
@@ -111,7 +126,26 @@
 				</section>
 
 				<section>
-					<h2>HTML5, CSS3 and Beyond</h2>
+					<h2>HTML5, CSS3</h2>
+					<ul>
+						<li>UI &amp; animation effects with CSS3</li>
+						<li>New HTML5 form inputs</li>
+						<li>Trigger hardware accelerated rendering through CSS3's 3D transform</li>
+						<li></li>
+					</ul>
+					<aside class="notes">
+						Most mobile web browsers are HTML5 capable.<br>
+						CSS3: background and border effects, transition and animation for better interface<br>
+						New HTML5 form inputs cut down the effort to customise component and interaction<br>
+					</aside>
+				</section>
+
+				<section>
+					<h3>Hardware accelerated rendering</h3>
+					<p>Demo: <code>position</code> with <code>top/left</code></p>
+					<p>Demo: <code>transform: translate</code></p>
+
+					<p><small>Source: <a href="http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/" target="_blank">Why Moving Elements With Translate() Is Better Than Pos:abs Top/left</a></small></p>
 				</section>
 
 				<section>
@@ -122,14 +156,14 @@
 					<h2>Touch Interface</h2>
 				</section>
 
-				<section id="delayed-click">
+				<section>
 					<h2>300ms Delay</h2>
-					<div class="demo">
+					<div id="delayed-click" class="demo">
 						<button id="delay-btn" class="btn">Default</button> &nbsp; &nbsp;
 						<button id="fastclick-btn" class="btn">FastClick</button>
 					</div>
-					<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript">
-$('document').ready(function() {
+					<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript"
+>document.addEventListener('DOMContentLoaded', function() {
 	//enable FastClick
 	FastClick.attach(document.body);
 
@@ -164,7 +198,8 @@ $('document').ready(function() {
 							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 						</div>
 					</div>
-					<pre><code data-trim contenteditable class="css">.scroll-box {
+					<pre><code data-trim contenteditable class="css"
+>.scroll-box {
 	width: 200px;
 	height: 200px;
 	overflow-y: scroll; /* has to be scroll, not auto */
@@ -180,7 +215,7 @@ $('document').ready(function() {
 				<section>
 					<h2>Web App Optimization</h2>
 
-					<aside>
+					<aside class="notes">
 						It's website optimization but with extreme approach.
 					</aside>
 				</section>

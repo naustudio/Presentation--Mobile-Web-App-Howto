@@ -1,10 +1,14 @@
 /*!
- * Custom Styles for THis presentation
+ * Custom Styles for this presentation
  */
 
 button {
 	font-size: 1em;
 	padding: 0.5em;
+}
+
+.presentation .inline-block {
+	display: inline-block;
 }
 
 /*
