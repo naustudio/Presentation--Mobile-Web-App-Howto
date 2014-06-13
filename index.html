@@ -118,6 +118,7 @@
 				</section>
 
 				<section>
+					<h3>One Must Know</h3>
 					<h2>HTML5 &amp; CSS3</h2>
 					<aside class="notes">
 						Most mobile web browsers are HTML5 capable.<br>
@@ -164,7 +165,7 @@
 				</section>
 
 				<section>
-					<h4>Geo Location Example</h4>
+					<h3>Geo Location Example</h3>
 					<div class="demo">
 						<button id="geo-btn">Get My Position</button>
 					</div>
@@ -199,7 +200,7 @@
 				</section>
 
 				<section>
-					<h4>Device Orientation API</h4>
+					<h3>Device Orientation API</h3>
 					<a href="http://girliemac.com/magic8ball/">http://girliemac.com/magic8ball/</a>
 				</section>
 
@@ -208,10 +209,10 @@
 						<h3>Mobile Web with HTML5 &amp; CSS3 Quirks</h3>
 					</section>
 					<section>
-						<h4>Text selection</h4>
+						<h3>Text selection</h3>
 					</section>
 					<section>
-						<h4>Tap Highlight</h4>
+						<h3>Tap Highlight</h3>
 					</section>
 				</section>
 
@@ -220,16 +221,125 @@
 				</section>
 
 				<section>
-					<h2>Touch Interface</h2>
+					<h3>Put Your CSS Knowledge to Test</h3>
 				</section>
 
 				<section>
-					<h2>300ms Delay</h2>
-					<div id="delayed-click" class="demo">
-						<button id="delay-btn" class="btn">Default</button> &nbsp; &nbsp;
-						<button id="fastclick-btn" class="btn">FastClick</button>
+					<h3>Mobile-friendly grid framework</h3>
+				</section>
+
+				<section>
+					<h3>Notes on Meta Tags</h3>
+				</section>
+
+				<section>
+					<h3>Notes on Retina Display</h3>
+				</section>
+
+				<section>
+					<h3>You Can't Avoid</h3>
+					<h2>Touch Interface</h2>
+				</section>
+
+				<section style="">
+					<h3>Touch Events</h3>
+					<div class="inline-block fragment">
+						<p>Mouse Events</p>
+						<p><small>(desktops)</small></p>
+						<ul>
+							<li>mousedown</li>
+							<li>mousemove</li>
+							<li>mouseup</li>
+							<li>mouseenter (IE)</li>
+							<li>mouseleave (IE)</li>
+							<li>mouseover</li>
+							<li>mouseout</li>
+						</ul>
 					</div>
-					<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript"
+					<div class="inline-block fragment">
+						<p>Touch Events</p>
+						<p><small>(mobile webkit and the like)</small></p>
+						<ul>
+							<li>touchstart</li>
+							<li>touchmove</li>
+							<li>touchend</li>
+							<li>touchenter</li>
+							<li>touchleave</li>
+							<li>touchcancel</li>
+						</ul>
+					</div>
+					<div class="inline-block fragment">
+						<p>Pointer Events</p>
+						<p><small>(IE Mobile*)</small></p>
+						<ul>
+							<li>pointerdown</li>
+							<li>pointermove</li>
+							<li>pointerup</li>
+							<li>pointerenter</li>
+							<li>pointerleave</li>
+							<li>pointerover</li>
+							<li>pointerout</li>
+							<li>pointercancel</li>
+						</ul>
+						<p><small>* In IE10 Mobile, it is <br>MSPointerDown, MSPointerUp...</small></p>
+					</div>
+					<br>
+					<div class="fragment">
+						All Platforms: <strong>click</strong>
+					</div>
+
+					<aside class="notes">
+						Example: https://mdn.mozillademos.org/en-US/docs/Web/Guide/Events/Touch_events$samples/Example?revision=588285
+					</aside>
+				</section>
+
+				<section>
+					<h3>Handling Interactive Events Across Platforms</h3>
+<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript"
+>$('#foo').on('click', function() {
+    //stuff
+});
+
+$('#foo').on('mouseup touchend MSPointerUp pointerup', function(event) {
+    //stuff
+});
+
+var POINTER_END = 'mouseup';
+if      ('ontouchend' in window)    { POINTER_END = 'touchend'; }
+else if ('onmspointerup' in window) { POINTER_END = 'MSPointerUp'; }
+else if ('onpointerup' in window)   { POINTER_END = 'pointerup'; }
+
+document.getElementById('foo').addEventListener(POINTER_END, function() {
+    //stuff
+});
+						</code></pre>
+					<aside class="notes">
+						PointerEvents shim: http://handjs.codeplex.com/
+					</aside>
+				</section>
+
+				<section>
+					<h3>Design for Touch Friendly Interface</h3>
+					<ul>
+						<li>Minimal touch area is 40px</li>
+						<li>Mind the way users holding the screen (Read The Mobile Book)</li>
+						<li>Maximize interface for content (example needed)</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>Mobile Web with Touch Interface Quirks</h3>
+					</section>
+					<section>
+						<h3>300ms Delay</h3>
+						<div id="delayed-click" class="inline-block demo">
+							<button class="btn">Default</button> &nbsp; &nbsp;
+						</div>
+						<div id="fastclick" class="inline-block demo">
+							<button class="btn">FastClick</button>
+						</div>
+						<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript"
 >document.addEventListener('DOMContentLoaded', function() {
     //enable FastClick
     FastClick.attach(document.body);
@@ -238,34 +348,34 @@
         alert( 'Button ' + e.target.textContent + ' is clicked' );
     });
 });
-					</code></pre>
+						</code></pre>
 
-					<script>
-						forEach.call($('#delayed-click .btn'), function(btn) {
-							btn.addEventListener('click', function(e) {
-								alert('Button ' + e.target.textContent + ' is clicked');
+						<script>
+							forEach.call($('#delayed-click .btn,#fastclick .btn'), function(btn) {
+								btn.addEventListener('click', function(e) {
+									alert('Button ' + e.target.textContent + ' is clicked');
+								});
 							});
-						});
-					</script>
-				</section>
+						</script>
+					</section>
 
-				<section id="touch-scrolling">
-					<h2>Scroll with momentum</h2>
-					<h3>iOS Overflowed Elements</h3>
-					<div class="demo">
-						<div class="scroll-box no-touch">
-							<h3>Not Smooth</h3>
-							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-						</div>
+					<section>
+						<h3>Scroll with momentum</h3>
+						<h4>iOS Overflowed Elements</h4>
+						<div class="demo">
+							<div class="scroll-box no-touch">
+								<h3>Not Smooth</h3>
+								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							</div>
 
-						<div class="scroll-box touch">
-							<h3>Smooth</h3>
-							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							<div class="scroll-box touch">
+								<h3>Smooth</h3>
+								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							</div>
 						</div>
-					</div>
-					<pre><code data-trim contenteditable class="css"
+						<pre><code data-trim contenteditable class="css"
 >.scroll-box {
 	width: 200px;
 	height: 200px;
@@ -275,12 +385,28 @@
 .touch {
 	-webkit-overflow-scrolling: touch;
 }
-</code></pre>
-
+						</code></pre>
+						<script>
+							forEach.call($('.scroll-box'), function(eachBox) {
+								eachBox.addEventListener('touchmove', function(e) {
+									//prevent slide swiping interfere with the scrolling in the boxes
+									e.stopPropagation();
+								});
+							});
+						</script>
+					</section>
+					<section>
+						<h3>iOS scroll Events Not Dispatched on Momentum</h3>
+					</section>
+					<section>
+						<h3>Hover State on Touch Events</h3>
+					</section>
 				</section>
 
 				<section>
+					<h3>Put</h3>
 					<h2>Web App Optimization</h2>
+					<h3>To The Next Level</h3>
 
 					<aside class="notes">
 						It's website optimization but with extreme approach.
@@ -288,7 +414,49 @@
 				</section>
 
 				<section>
-					<h2>Real Device Testing</h2>
+					<h3>Page Load Optimization</h3>
+					<ul>
+						<li>Avoid big, legacy libraries</li>
+					</ul>
+
+					<aside class="notes">
+						Avoid big, legacy libraris, use light ones: jQuery Alternative -> Zepto, DOMtastic
+					</aside>
+				</section>
+
+				<section>
+					<h3>Performance Optimization</h3>
+					<ul>
+						<li>Reduce number of DOM objects -> less elements, simplify structure</li>
+						<li>Optimize jQuery, vanilla JS is preferred</li>
+						<li>Rendering / drawing optimization</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Mobile Web Testing</h2>
+				</section>
+
+				<section>
+					<h3>Chrome Simulation</h3>
+				</section>
+
+				<section>
+					<h3>Adobe Adege Inspect</h3>
+				</section>
+
+				<section>
+					<h3>Real Device Testing with Debugger</h3>
+				</section>
+
+				<section>
+					<h2>Mobile UI Frameworks, YES or NO?</h2>
+					<h3>Some welknown Mobile Frameworks:</h3>
+					<ul>
+						<li>Kendo UI</li>
+						<li>SenchaTouch</li>
+						<li>jQuery Mobile</li>
+					</ul>
 				</section>
 
 				<section>
@@ -296,9 +464,6 @@
 					<h3>Any questions?</h3>
 				</section>
 
-				<section>
-					<h2></h2>
-				</section>
 
 				<section>
 					<h2>References</h2>
@@ -341,7 +506,7 @@
 					//additional library for presentation
 					{ src: 'lib/js/fastclick.min.js', async: true, callback: function() {
 						// attach only this button to see the different
-						FastClick.attach(document.getElementById('fastclick-btn'));
+						FastClick.attach(document.getElementById('fastclick'));
 					} }
 				]
 			});

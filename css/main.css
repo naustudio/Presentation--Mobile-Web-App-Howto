@@ -9,6 +9,11 @@ button {
 
 .presentation .inline-block {
 	display: inline-block;
+	vertical-align: top;
+}
+
+.presentation .block {
+	display: block;
 }
 
 /*
