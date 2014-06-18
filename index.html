@@ -83,7 +83,7 @@
 				</section>
 
 				<section>
-					<h2>Samples of Mobile Web Apps</h2>
+					<h2>Examples of Mobile Web Apps</h2>
 					<ul>
 						<li><a href="http://app.ft.com/">Financial Times Web App</a></li>
 						<li>SCB Breeze Biz</li>
@@ -94,12 +94,16 @@
 				</section>
 
 				<section>
-					<h2>Major Mobile Web Browser</h2>
+					<h2>Major Mobile Web Browsers</h2>
 					<div class="inline-block">
-						<img src="img/mobile-browsers-stats.png" height="474" width="538" alt="Mobile Browser Stats">
-						<p><small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201305-201405">StatCounter Global Stats - Browser Market Share</a></small></p>
+						<img src="img/mobile-browsers-stats.png" height="474" width="538" alt="Mobile Browser Stats"><br>
+						<small>Wekit based browsers ≈ 70%</small><br>
+						<small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201305-201405">StatCounter Global Stats - Browser Market Share</a></small>
 					</div>
-
+					<aside class="notes">
+						This presentation is not intended to deal with many complicated aspects of mobile browsers and rendering engines.<br>
+						Generally, we'll focus on Android, iOS &amp; Window Phones mobile browsers
+					</aside>
 				</section>
 
 				<section>
@@ -118,7 +122,7 @@
 				</section>
 
 				<section>
-					<h3>One Must Know</h3>
+					<p>One Must Know</p>
 					<h2>HTML5 &amp; CSS3</h2>
 					<aside class="notes">
 						Most mobile web browsers are HTML5 capable.<br>
@@ -131,7 +135,7 @@
 						<li>Web fonts for custom typography</li>
 						<li>Transitions for interaction indicators</li>
 						<li>Animations for state transitions</li>
-						<li>Box shadows, text shadows, border radius...</li>
+						<li>UI decorations with shadows, border radius, gradients, filter...</li>
 					</ul>
 					<aside class="notes">
 						CSS3: background and border effects, transition and animation for better interface<br>
@@ -139,19 +143,124 @@
 				</section>
 
 				<section>
-					<h3>New Html5 Form Inputs</h3>
+					<h3>Built-in HTML5 Inputs</h3>
+					<p>Make use of built-in inputs and interactive elements <br>to save development time</p>
+					<div class="demo">
+						<div class="inline-block left-align" style="width:40%">
+							<input type="date"><br>
+							<input type="time"><br>
+							<input type="month"><br>
+						</div>
+						<div class="inline-block left-align" style="width:40%">
+							<input type="range" class="no-swipe"><br>
+							<select name="demo-select">
+								<option value="">Jump To Section:</option>
+								<optgroup label="Introduction"><option value="#sg-about">About</option></optgroup>
+								<optgroup label="Global Styles"><option value="#sg-global/colors">colors</option><option value="#sg-global/typography">typography</option></optgroup>
+								<optgroup label="Basic Inputs"><option value="#sg-basic inputs/push buttons">push buttons</option><option value="#sg-basic inputs/radio buttons">radio buttons</option><option value="#sg-basic inputs/checkbox">checkbox</option></optgroup>
+								<optgroup label="Advanced Inputs"><option value="#sg-advanced inputs/text area">text area</option><option value="#sg-advanced inputs/date input">date input</option><option value="#sg-advanced inputs/text input">text input</option><option value="#sg-advanced inputs/currency input">currency input</option><option value="#sg-advanced inputs/email input">email input</option><option value="#sg-advanced inputs/editable select input">editable select input</option><option value="#sg-advanced inputs/searchable dropdown">searchable dropdown</option><option value="#sg-advanced inputs/nric input">nric input</option><option value="#sg-advanced inputs/toggle input">toggle input</option><option value="#sg-advanced inputs/slider">slider</option><option value="#sg-advanced inputs/step slider">step slider</option><option value="#sg-advanced inputs/icon slider">icon slider</option><option value="#sg-advanced inputs/icon slider 2">icon slider 2</option><option value="#sg-advanced inputs/volume slider">volume slider</option></optgroup>
+								<optgroup label="widget"><option value="#sg-widgets/multi color circular graph">multi color circular graph</option><option value="#sg-widgets/tooltips">tooltips</option><option value="#sg-widgets/accordion">accordion</option></optgroup>
+							</select>
+						</div>
+					</div>
+					<pre><code class="html"
+>&lt;input type="date"&gt;
+&lt;input type="time"&gt;
+&lt;input type="month"&gt;
+&lt;input type="range"&gt;
+&lt;select&gt;
+	&lt;option value=""&gt;Jump To Section:&lt;/option&gt;
+	&lt;optgroup label="Introduction"&gt;
+		&lt;option value="about"&gt;About&lt;/option&gt;
+	&lt;/optgroup&gt;
+	...
+&lt;/select&gt;</code></pre>
 					<aside class="notes">
 						New HTML5 form inputs cut down the effort to customise component and interaction<br>
+						All built-in iOS Safari inputs: https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/InputTypes.html
 					</aside>
 				</section>
 
 				<section>
-					<h3>Hardware Accelerated Rendering</h3>
-					<h4>HWA rendering through CSS3's 3D transform</h4>
-					<p><a href="http://codepen.io/paulirish/full/nkwKs/">Demo: <code>position</code> with <code>top/left</code></a></p>
-					<p><a href="http://codepen.io/paulirish/full/LsxyF/">Demo: <code>transform: translate</code></a></p>
+					<h3>Present To Users The Correct Keyboard</h3>
+					<div class="demo">
+						<input type="text" placeholder="type=text"><br>
+						<input type="url" placeholder="type=url"><br>
+						<input type="email" placeholder="type=email"><br>
+						<input type="search" placeholder="type=search"><br>
+						<input type="tel" placeholder="type=tel"><br>
+						<input type="number" placeholder="type=number"><br>
+					</div>
+					<p>
+						<br>
+						<small>Link: <a href="http://blog.teamtreehouse.com/using-html5-input-types-to-enhance-the-mobile-browsing-experience">screenshots of different keyboard layouts and inputs</a></small>
+					</p>
+					<aside class="notes">
+						For each type of inputs, user is presented with different keyboard layout for best input experiences.<br>
+						Add a note that we can define capitalization rules for the text input, for example: capitalize first letter of each word.<br>
+						Reference: http://willem.stuursma.name/2012/01/30/an-overview-of-different-iphone-keyboards-in-mobile-safari/
+					</aside>
+				</section>
 
+				<section>
+					<h3>Beware of Default Text Selection</h3>
+					<ul>
+						<li>Text in browsers are always selectable (try select me)</li>
+						<li>Generally, we should disable text selection to avoid unxepected behaviors</li>
+					</ul>
+					<pre><code class="css"
+>/* Disable text selection for all */
+* {
+	-webkit-user-select: none;
+}
+
+/* Enable back text selection on text inputs */
+input, textarea {
+	-webkit-user-select: text;
+}
+					</code></pre>
+				</section>
+
+				<section class="tap-highlight">
+					<h3>Tap Highlight Can Generally Be Removed</h3>
+					<div class="demo">
+						<a href="javascript:;" class="no-swipe">Link with tap highlight</a>
+						<br>
+						<button type="button" class="no-swipe">A Button</button>
+						<br>
+						<div class="tappable" class="no-swipe"><code>&lt;div&gt;Tappable Element&lt;/div&gt;</code></div>
+					</div>
+					<pre><code class="css"
+>* {
+	/* disable tap highlight color */
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}					</code></pre>
+					<script>
+						forEach.call($('.tap-highlight .tappable'), function(el) {
+							el.addEventListener('click', function() {
+								console.log(el, 'is clicked');
+							});
+						});
+					</script>
+				</section>
+
+				<section>
+					<h3>Hardware Accelerated Rendering</h3>
+					<p>HWA rendering through CSS3's 3D transform</p>
+					<ul>
+						<li><a href="http://codepen.io/paulirish/full/nkwKs/">Demo: <code>position</code> with <code>top/left</code></a></li>
+						<li><a href="http://codepen.io/paulirish/full/LsxyF/">Demo: <code>transform: translate</code></a></li>
+					</ul>
 					<p><small>Source: <a href="http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/" target="_blank">Why Moving Elements With Translate() Is Better Than Pos:abs Top/left</a></small></p>
+					<pre><code class="css"
+>/* Enable HWA on a particular element */
+.hwa {
+	-webkit-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+					</code></pre>
 				</section>
 
 				<section>
@@ -203,32 +312,27 @@
 				</section>
 
 				<section>
-					<h3>Device Orientation API</h3>
+					<h3>Device Orientation API Demo</h3>
 					<a href="http://girliemac.com/magic8ball/">http://girliemac.com/magic8ball/</a>
 				</section>
 
 				<section>
-					<section>
-						<h3>Mobile Web with HTML5 &amp; CSS3 Quirks</h3>
-					</section>
-					<section>
-						<h3>Text selection</h3>
-					</section>
-					<section>
-						<h3>Tap Highlight</h3>
-					</section>
-				</section>
-
-				<section>
+					<p>Put Your</p>
 					<h2>Responsive Web Design (RWD)</h2>
+					<p>Knowledge to Test</p>
 				</section>
 
 				<section>
-					<h3>Put Your CSS Knowledge to Test</h3>
+					<h3>Common Practices</h3>
+					<ul>
+						<li>Avoid fix size unit (i.e: px, pt)</li>
+						<li>Let</li>
+					</ul>
 				</section>
 
 				<section>
 					<h3>Mobile-friendly grid framework</h3>
+					<ul></ul>
 				</section>
 
 				<section>
@@ -237,10 +341,28 @@
 
 				<section>
 					<h3>Notes on Retina Display</h3>
+					<small class="inline-block">
+						<img src="img/logo.png" height="146" width="200" alt=""><br>
+						logo.png
+					</small>
+					<small class="inline-block">
+						<img src="img/logo@2x.png" height="146" width="200" alt=""><br>
+						logo@2x.png
+					</small>
+					<small class="inline-block">
+						<img src="img/logo.svg" height="146" width="200" alt=""><br>
+						logo.svg
+					</small>
+					<ul style="margin-top: 1em">
+						<li class="fragment">Use SVG / icon fonts whenever possible</li>
+						<li class="fragment">Use media query to swap to hi-res images (backgrounds only)</li>
+						<li class="fragment">Use a responsive image solution*</li>
+					</ul>
+					<p class="fragment"><small>Link: <a href="http://www.smashingmagazine.com/2014/02/03/one-solution-to-responsive-images/">Responsive image solution</a></small></p>
 				</section>
 
 				<section>
-					<h3>You Can't Avoid</h3>
+					<p>You Can't Avoid</p>
 					<h2>Touch Interface</h2>
 				</section>
 
@@ -316,6 +438,7 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
     //stuff
 });
 						</code></pre>
+						<p>PointerEvents polyfill</p>
 					<aside class="notes">
 						PointerEvents shim: http://handjs.codeplex.com/
 					</aside>
@@ -366,13 +489,13 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 						<h3>Scroll with momentum</h3>
 						<h4>iOS Overflowed Elements</h4>
 						<div class="demo">
-							<div class="scroll-box no-touch">
+							<div class="scroll-box no-touch no-swipe">
 								<h3>Not Smooth</h3>
 								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 							</div>
 
-							<div class="scroll-box touch">
+							<div class="scroll-box touch no-swipe">
 								<h3>Smooth</h3>
 								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
 								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
@@ -389,14 +512,6 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 	-webkit-overflow-scrolling: touch;
 }
 						</code></pre>
-						<script>
-							forEach.call($('.scroll-box'), function(eachBox) {
-								eachBox.addEventListener('touchmove', function(e) {
-									//prevent slide swiping interfere with the scrolling in the boxes
-									e.stopPropagation();
-								});
-							});
-						</script>
 					</section>
 					<section>
 						<h3>iOS scroll Events Not Dispatched on Momentum</h3>
@@ -407,9 +522,9 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 				</section>
 
 				<section>
-					<h3>Put</h3>
+					<p>Put</p>
 					<h2>Web App Optimization</h2>
-					<h3>To The Next Level</h3>
+					<p>To The Next Level</p>
 
 					<aside class="notes">
 						It's website optimization but with extreme approach.
@@ -417,12 +532,46 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 				</section>
 
 				<section>
-					<h3>Page Load Optimization</h3>
+					<h3>Reduce The Size of Resource Transfered to Device</h3>
 					<ul>
-						<li>Avoid big, legacy libraries</li>
+						<li class="fragment">Practice page load optimization</li>
+						<li class="fragment">
+							Avoid big, legacy libraries<br>
+							<small>Examples: </small>
+							<small class="inline-block left-align" style="margin-left: 1em">
+								jQuery 1.x:<br>
+								jQuery 2.x:<br>
+								Zepto:</small>
+							<small class="inline-block left-align bold">
+								93.5KB<br>
+								82.3KB<br>
+								<span class="green">24.1KB</span><br>
+							</small>
+							<small class="inline-block left-align" style="margin-left: 2em">
+								RequireJS:<br>
+								AlmondJS:<br>
+							</small>
+							<small  class="inline-block left-align bold">
+								14.9KB<br>
+								<span class="green">4.9KB</span><br>
+							</small>
+							<br>
+							<small>(Latest production builds as of 5/2014)</small>
+						</li>
+
+						<li class="fragment">Deliver different assets / contents to <br>mobile users (if possible)</li>
 					</ul>
 
 					<aside class="notes">
+						Page load optimization:
+						<br>
+						<ul>
+							<li>Minify static resources</li>
+							<li>Use caching control</li>
+							<li>Use CDN</li>
+							<li>...</li>
+						</ul>
+						<br>
 						Avoid big, legacy libraris, use light ones: jQuery Alternative -> Zepto, DOMtastic
 					</aside>
 				</section>
@@ -430,10 +579,19 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 				<section>
 					<h3>Performance Optimization</h3>
 					<ul>
-						<li>Reduce number of DOM objects -> less elements, simplify structure</li>
-						<li>Optimize jQuery, vanilla JS is preferred</li>
-						<li>Rendering / drawing optimization</li>
+						<li class="fragment">Reduce number of DOM objects -> less elements, simplify structure</li>
+						<li class="fragment">Optimize jQuery, vanilla JS is preferred</li>
+						<li class="fragment">Rendering / drawing optimization</li>
+						<li class="fragment">Avoid / supress touch event listeners where possible</li>
+						<li class="fragment">Avoid abusive use of visual effects</li>
+						<li class="fragment">Put HWA tricks to good use</li>
+						<li class="fragment">Use CSS animation instead of JS' animate script*</li>
+						<li class="fragment">Use <code>requestAnimationFrame</code> instead of <code>setInterval</code>*</li>
 					</ul>
+					<p class="fragment"><small>* A good animation library like GSAP will help using the best approach</small></p>
+					<aside class="notes">
+						Shadows, gradients are known to cause performance and UI janks. HWA tricks will overcome but GPU memory is limited.
+					</aside>
 				</section>
 
 				<section>
@@ -442,14 +600,17 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 
 				<section>
 					<h3>Chrome Simulation</h3>
+					<p>[Screenshot needed]</p>
 				</section>
 
 				<section>
-					<h3>Adobe Adege Inspect</h3>
+					<h3>Adobe Edge Inspect</h3>
+					<p>[Screenshot Needed]</p>
 				</section>
 
 				<section>
 					<h3>Real Device Testing with Debugger</h3>
+					<p>Safari developer demo</p>
 				</section>
 
 				<section>
@@ -483,6 +644,13 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 		<script src="js/reveal.min.js"></script>
 
 		<script>
+
+			//prevent slide swiping interfere with some of the interactive elements
+			forEach.call(document.querySelectorAll('.no-swipe'), function(eachElement) {
+				eachElement.addEventListener('touchmove', function(e) {
+					e.stopPropagation();
+				});
+			});
 
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
