@@ -81,3 +81,60 @@ input[type="range"]::-webkit-slider-thumb {
 .presentation .touch {
 	-webkit-overflow-scrolling: touch;
 }
+
+.menu {
+	position: relative;
+	background: #ccc;
+	display: inline-block;
+}
+
+.presentation .menu a {
+	color: black;
+	display: block;
+	z-index: 1;
+}
+
+.presentation .menu a:hover {
+	color: black;
+}
+
+.presentation .menu:hover .submenu {
+	height: 400%; /* there 4 items */
+	opacity: 1;
+}
+
+.menu .top-item {
+	padding: 0.2em 2em;
+	-webkit-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.menu .submenu {
+	text-align: left;
+	position: absolute;
+	background: #ddd;
+	overflow: hidden;
+	height: 0;
+	opacity: 0;
+	z-index: 2;
+	-webkit-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.5);
+	-webkit-transition: height 0.5s, opacity 0.5s;
+	-o-transition: height 0.5s, opacity 0.5s;
+	transition: height 0.5s, opacity 0.5s;
+}
+
+.menu .submenu a {
+	padding: 0.2em 1em;
+	border-bottom: 1px solid #888;
+}
+
+.menu .submenu a:hover {
+	color: black;
+	border-bottom: 1px solid #888;
+}
+
+.menu .submenu a:active {
+	background: #eee;
+	border-bottom: 1px solid #888;
+}

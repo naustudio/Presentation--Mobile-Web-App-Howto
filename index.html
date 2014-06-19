@@ -326,13 +326,8 @@ input, textarea {
 					<h3>Common Practices</h3>
 					<ul>
 						<li>Avoid fix size unit (i.e: px, pt)</li>
-						<li>Let</li>
+						<li>Use mobile-friendly grid framework</li>
 					</ul>
-				</section>
-
-				<section>
-					<h3>Mobile-friendly grid framework</h3>
-					<ul></ul>
 				</section>
 
 				<section>
@@ -355,10 +350,22 @@ input, textarea {
 					</small>
 					<ul style="margin-top: 1em">
 						<li class="fragment">Use SVG / icon fonts whenever possible</li>
-						<li class="fragment">Use media query to swap to hi-res images (backgrounds only)</li>
+						<li class="fragment">Use media query to swap hi-res images (backgrounds only)
+							<pre><code class="css"
+>@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    /* Retina-specific stuff here */
+}
+							</code></pre>
+						</li>
 						<li class="fragment">Use a responsive image solution*</li>
 					</ul>
-					<p class="fragment"><small>Link: <a href="http://www.smashingmagazine.com/2014/02/03/one-solution-to-responsive-images/">Responsive image solution</a></small></p>
+
+					<p class="fragment"><small>*Link: <a href="http://www.smashingmagazine.com/2014/02/03/one-solution-to-responsive-images/">Responsive image solution</a></small></p>
+					<aside class="notes">
+						Retina Display Query Media snippets: http://css-tricks.com/snippets/css/retina-display-media-query/
+					</aside>
 				</section>
 
 				<section>
@@ -438,9 +445,137 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
     //stuff
 });
 						</code></pre>
-						<p>PointerEvents polyfill</p>
+						<ul>
+							<li><a href="http://handjs.codeplex.com/">PointerEvents polyfill</a></li>
+							<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Touch_events#Tracking_new_touches">Handling multi-touch</a></li>
+						</ul>
 					<aside class="notes">
 						PointerEvents shim: http://handjs.codeplex.com/
+					</aside>
+				</section>
+
+				<section>
+					<h3>300ms Delay</h3>
+					<div id="delayed-click" class="inline-block demo">
+						<button class="btn">Default</button> &nbsp; &nbsp;
+					</div>
+					<div id="fastclick" class="inline-block demo">
+						<button class="btn">FastClick</button>
+					</div>
+					<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript"
+>document.addEventListener('DOMContentLoaded', function() {
+//enable FastClick
+FastClick.attach(document.body);
+
+document.getElementById('fastclick-btn').addEventListener('click', function(e) {
+    alert( 'Button ' + e.target.textContent + ' is clicked' );
+});
+});
+					</code></pre>
+
+					<script>
+						forEach.call($('#delayed-click .btn,#fastclick .btn'), function(btn) {
+							btn.addEventListener('click', function(e) {
+								alert('Button ' + e.target.textContent + ' is clicked');
+							});
+						});
+					</script>
+				</section>
+
+				<section>
+					<h3>Scroll with momentum</h3>
+					<h4>iOS Overflowed Elements</h4>
+					<div class="demo">
+						<div class="scroll-box no-touch no-swipe">
+							<h3>Not Smooth</h3>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+						</div>
+
+						<div class="scroll-box touch no-swipe">
+							<h3>Smooth</h3>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+						</div>
+					</div>
+					<pre><code data-trim contenteditable class="css"
+>.scroll-box {
+width: 200px;
+height: 200px;
+overflow-y: scroll; /* has to be scroll, not auto */
+}
+
+.touch {
+-webkit-overflow-scrolling: touch;
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>iOS scroll Events Not Dispatched on Momentum</h3>
+					<div class="demo left-align">
+						<div id="scroll-box" class="scroll-box touch no-swipe" style="margin-left: 15%">
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+						</div>
+						<small>Scroll top: <output id="scroll-output">0</output></small>
+					</div>
+					<pre class="inline-block"><code class="javascript"
+>var output = document.getElementById('scroll-output');
+var scrollBox = document.getElementById('scroll-box');
+
+scrollBox.addEventListener('scroll', function() {
+	output.value = scrollBox.scrollTop;
+});					</code></pre>
+					<p>Work around: use <a href="https://github.com/cubiq/iscroll">iScroll library</a></p>
+
+					<script>
+						var output = document.getElementById('scroll-output');
+						var scrollBox = document.getElementById('scroll-box');
+						scrollBox.addEventListener('scroll', function() {
+							output.value = scrollBox.scrollTop;
+						});
+					</script>
+				</section>
+
+				<section>
+					<h3>Hover State on Touch-enabled Browsers</h3>
+					<ul>
+						<li>On Webkit browsers, <code>:hover</code> state is triggered after first tap and mantained until user tap again on another target.</li>
+						<li>
+							This behavior help menu dropping down on mouse's hover continue to works
+						</li>
+						<li>Example:&nbsp;
+							<div class="menu">
+								<a class="top-item" href="javascript:;">Menu</a>
+								<nav class="submenu">
+									<a href="javascript:;">Home</a>
+									<a href="javascript:;">About</a>
+									<a href="javascript:;">Portfolio</a>
+									<a href="javascript:;">Contact</a>
+								</nav>
+							</div>
+							<pre><code class="css"
+>.submenu {
+	position: absolute;
+	overflow: hidden;
+	height: 0; opacity: 0;
+	transition: height 0.5s, opacity 0.5s; /* browser prefix needed */
+}
+
+.menu:hover .submenu {
+	height: 400%; /* there 4 items */
+	opacity: 1;
+}							</code></pre>
+						</li>
+						<li>However, this won't work on IE Mobile</li>
+					</ul>
+
+
+					<aside class="notes">
+						Observe hover effects on normal links of this presentation.<br>
+						IE10 mobile doesn't support maintained :hover state: http://css-tricks.com/forums/topic/ie10-mobiletouch-hover-navigation-problem/
 					</aside>
 				</section>
 
@@ -449,76 +584,8 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 					<ul>
 						<li>Minimal touch area is 40px</li>
 						<li>Mind the way users holding the screen (Read The Mobile Book)</li>
-						<li>Maximize interface for content (example needed)</li>
+						<li>Maximize interface for content</li>
 					</ul>
-				</section>
-
-				<section>
-					<section>
-						<h3>Mobile Web with Touch Interface Quirks</h3>
-					</section>
-					<section>
-						<h3>300ms Delay</h3>
-						<div id="delayed-click" class="inline-block demo">
-							<button class="btn">Default</button> &nbsp; &nbsp;
-						</div>
-						<div id="fastclick" class="inline-block demo">
-							<button class="btn">FastClick</button>
-						</div>
-						<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript"
->document.addEventListener('DOMContentLoaded', function() {
-    //enable FastClick
-    FastClick.attach(document.body);
-
-    document.getElementById('fastclick-btn').addEventListener('click', function(e) {
-        alert( 'Button ' + e.target.textContent + ' is clicked' );
-    });
-});
-						</code></pre>
-
-						<script>
-							forEach.call($('#delayed-click .btn,#fastclick .btn'), function(btn) {
-								btn.addEventListener('click', function(e) {
-									alert('Button ' + e.target.textContent + ' is clicked');
-								});
-							});
-						</script>
-					</section>
-
-					<section>
-						<h3>Scroll with momentum</h3>
-						<h4>iOS Overflowed Elements</h4>
-						<div class="demo">
-							<div class="scroll-box no-touch no-swipe">
-								<h3>Not Smooth</h3>
-								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-							</div>
-
-							<div class="scroll-box touch no-swipe">
-								<h3>Smooth</h3>
-								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-							</div>
-						</div>
-						<pre><code data-trim contenteditable class="css"
->.scroll-box {
-	width: 200px;
-	height: 200px;
-	overflow-y: scroll; /* has to be scroll, not auto */
-}
-
-.touch {
-	-webkit-overflow-scrolling: touch;
-}
-						</code></pre>
-					</section>
-					<section>
-						<h3>iOS scroll Events Not Dispatched on Momentum</h3>
-					</section>
-					<section>
-						<h3>Hover State on Touch Events</h3>
-					</section>
 				</section>
 
 				<section>
