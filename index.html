@@ -674,6 +674,9 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					//for remote server notes
+					{ src: 'socket.io/socket.io.js', async: true },
+					{ src: 'plugin/notes-server/client.js', async: true },
 					//additional library for presentation
 					{ src: 'lib/js/fastclick.min.js', async: true, callback: function() {
 						// attach only this button to see the different

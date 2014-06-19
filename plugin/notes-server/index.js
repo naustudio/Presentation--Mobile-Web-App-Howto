@@ -15,6 +15,9 @@ var opts = {
 };
 
 io.sockets.on('connection', function(socket) {
+	socket.on('init', function(connInfo) {
+		console.log('Connected slide notes at http://localhost:' + opts.port + '/notes/' + connInfo.socketId);
+	});
 	socket.on('slidechanged', function(slideData) {
 		socket.broadcast.emit('slidedata', slideData);
 	});
@@ -24,7 +27,7 @@ io.sockets.on('connection', function(socket) {
 });
 
 app.configure(function() {
-	[ 'css', 'js', 'images', 'plugin', 'lib' ].forEach(function(dir) {
+	[ 'css', 'js', 'img', 'plugin', 'lib' ].forEach(function(dir) {
 		app.use('/' + dir, staticDir(opts.baseDir + dir));
 	});
 });

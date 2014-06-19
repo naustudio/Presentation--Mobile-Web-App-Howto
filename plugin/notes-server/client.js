@@ -4,7 +4,7 @@
 
 	var socket = io.connect(window.location.origin);
 	var socketId = Math.random().toString().slice(2);
-	
+
 	console.log('View slide notes at ' + window.location.origin + '/notes/' + socketId);
 	window.open(window.location.origin + '/notes/' + socketId, 'notes-' + socketId);
 
@@ -54,4 +54,7 @@
 
 		socket.emit('slidechanged', slideData);
 	} );
+
+	//notify server of the newly connected session
+	socket.emit('init', {socketId: socketId} );
 }());
