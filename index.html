@@ -72,8 +72,8 @@
 						<li>created with <strong>Web technology</strong></li>
 						<li>on handheld form factors<br>(smartphones, tablets)</li>
 						<li>run <strong>on mobile web browser*</strong></li>
-						<li>normally having <strong>touch interface</strong></li>
-						<li>offline or online connected through<br>mobile network or wi-fi</li>
+						<li>normally have <strong>touch interface</strong></li>
+						<li>offline or online, connected through<br>mobile network or wi-fi</li>
 					</ul>
 					<img class="inline-block fragment" src="img/mobile-browser-lol.jpg" alt="Mobile Browser" width="220">
 					<p><small class="fragment">* not include proxy browsers</small></p>
@@ -101,7 +101,8 @@
 						<small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201305-201405">StatCounter Global Stats - Browser Market Share</a></small>
 					</div>
 					<aside class="notes">
-						This presentation is not intended to deal with many complicated aspects of mobile browsers and rendering engines.<br>
+						This presentation is not intended to deal with the complicated fragmentation of mobile browsers and rendering engines.<br>
+						Note on UC Browser: it's a proxy China-based browsers, its high volume is due to the fact it is used by many Chinese<br>
 						Generally, we'll focus on Android, iOS &amp; Window Phones mobile browsers
 					</aside>
 				</section>
@@ -117,7 +118,7 @@
 					</ul>
 
 					<aside class="notes">
-
+						Raise questions about audience's experiences or guess about issues, concerns on developing web app for mobile devices.
 					</aside>
 				</section>
 
@@ -144,16 +145,18 @@
 
 				<section>
 					<h3>Built-in HTML5 Inputs</h3>
-					<p>Make use of built-in inputs and interactive elements <br>to save development time</p>
+					<p>Make use of built-in inputs and interactive elements.<br>Your custom JS components can't beat the native one.</p>
+
 					<div class="demo">
-						<div class="inline-block left-align" style="width:40%">
-							<input type="date"><br>
-							<input type="time"><br>
-							<input type="month"><br>
+						<div class="inline-block left-align" style="width:45%">
+							<label style="width: 2.7em">Date:</label> <input type="date"><br>
+							<label style="width: 2.7em">Time:</label> <input type="time"><br>
+							<label style="width: 2.7em">Month:</label> <input type="month"><br>
 						</div>
-						<div class="inline-block left-align" style="width:40%">
-							<input type="range" class="no-swipe"><br>
-							<select name="demo-select">
+						<div class="inline-block left-align" style="width:45%">
+							<label style="width: 3em">Range:</label> <input type="range" class="no-swipe" style="width: 70%"><br>
+							<label style="width: 3em">Select:</label>
+							<select name="demo-select" style="width: 70%">
 								<option value="">Jump To Section:</option>
 								<optgroup label="Introduction"><option value="#sg-about">About</option></optgroup>
 								<optgroup label="Global Styles"><option value="#sg-global/colors">colors</option><option value="#sg-global/typography">typography</option></optgroup>
@@ -175,6 +178,7 @@
 	&lt;/optgroup&gt;
 	...
 &lt;/select&gt;</code></pre>
+					<p><small>Link: <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/InputTypes.html">all built-in iOS Safari inputs</a></small></p>
 					<aside class="notes">
 						New HTML5 form inputs cut down the effort to customise component and interaction<br>
 						All built-in iOS Safari inputs: https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/InputTypes.html
@@ -191,13 +195,13 @@
 						<input type="tel" placeholder="type=tel"><br>
 						<input type="number" placeholder="type=number"><br>
 					</div>
-					<p>
-						<br>
+					<p style="margin-top: 2em">
 						<small>Link: <a href="http://blog.teamtreehouse.com/using-html5-input-types-to-enhance-the-mobile-browsing-experience">screenshots of different keyboard layouts and inputs</a></small>
 					</p>
 					<aside class="notes">
 						For each type of inputs, user is presented with different keyboard layout for best input experiences.<br>
 						Add a note that we can define capitalization rules for the text input, for example: capitalize first letter of each word.<br>
+						Use case: make use of 'tel' input to create a currency amount input<br>
 						Reference: http://willem.stuursma.name/2012/01/30/an-overview-of-different-iphone-keyboards-in-mobile-safari/
 					</aside>
 				</section>
@@ -223,25 +227,42 @@ input, textarea {
 
 				<section class="tap-highlight">
 					<h3>Tap Highlight Can Generally Be Removed</h3>
-					<div class="demo">
-						<a href="javascript:;" class="no-swipe">Link with tap highlight</a>
+					<p>And use <code>:active</code> instead</p>
+					<div class="demo inline-block">
+						<a href="javascript:;" class="no-swipe">A Normal Link</a>
 						<br>
-						<button type="button" class="no-swipe">A Button</button>
+						<button type="button" class="no-swipe">A Normal Button</button>
 						<br>
-						<div class="tappable" class="no-swipe"><code>&lt;div&gt;Tappable Element&lt;/div&gt;</code></div>
+						<div class="clickable inline-block no-swipe"><code>&lt;i&gt;☺︎&lt;/i&gt;</code></div>
+					</div>
+					<div class="demo inline-block">
+						<a href="javascript:;" class="no-swipe tappable">:active Link</a>
+						<br>
+						<button type="button" class="no-swipe tappable">:active Button</button>
+						<br>
+						<div class="clickable inline-block no-swipe tappable"><code>&lt;i class="tappable"&gt;☺&lt;/i&gt;</code></div>
 					</div>
 					<pre><code class="css"
->* {
-	/* disable tap highlight color */
+>/* disable tap highlight color */
+* {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
-}					</code></pre>
+}
+
+/* use pseudo class :active instead */
+.tappable:active {
+	transform: translateY(2px); /* browser prefix needed */
+}
+</code></pre>
 					<script>
-						forEach.call($('.tap-highlight .tappable'), function(el) {
+						forEach.call($('.tap-highlight .clickable'), function(el) {
 							el.addEventListener('click', function() {
 								console.log(el, 'is clicked');
 							});
 						});
 					</script>
+					<aside class="notes">
+						The tap highlight is there but very hard to observe on iOS7 Safari.
+					</aside>
 				</section>
 
 				<section>
@@ -317,21 +338,38 @@ input, textarea {
 				</section>
 
 				<section>
-					<p>Put Your</p>
 					<h2>Responsive Web Design (RWD)</h2>
-					<p>Knowledge to Test</p>
+					<p>Is A Must</p>
 				</section>
 
 				<section>
 					<h3>Common Practices</h3>
 					<ul>
 						<li>Avoid fix size unit (i.e: px, pt)</li>
-						<li>Use mobile-friendly grid framework</li>
+						<li>Use a mobile-friendly grid framework</li>
 					</ul>
 				</section>
 
 				<section>
 					<h3>Notes on Meta Tags</h3>
+					<pre><code class="html"
+>&lt;head&gt;
+	...
+	&lt;!-- Allow the app to runs in fullscreen mode --&gt;
+	&lt;meta name="apple-mobile-web-app-capable" content="yes"/&gt;
+	&lt;!-- Control the status bar appearance in fullscreen mode (new in iOS7) --&gt;
+	&lt;meta name="apple-mobile-web-app-status-bar-style" content="black"&gt;
+	&lt;!-- Control viewport sizes, scaling... behaviors --&gt;
+	&lt;meta name="viewport" content="width=device-width,height=728,
+	initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"&gt;
+	&lt;!-- Disable/enable telephone number detection --&gt;
+	&lt;meta name="format-detection" content="telephone=no"&gt;
+	&lt;!-- Place favicon.ico and apple-touch-icon.png in the root directory --&gt;
+	...
+&lt;/head&gt;
+
+					</code></pre>
+					<p><small>Link: <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html">iOS Safari supported meta tags</a></small></p>
 				</section>
 
 				<section>
@@ -455,28 +493,32 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 				</section>
 
 				<section>
-					<h3>300ms Delay</h3>
+					<h3>The Great 300ms Delay</h3>
 					<div id="delayed-click" class="inline-block demo">
-						<button class="btn">Default</button> &nbsp; &nbsp;
+						<a class="btn" href="javascript:;">Default Link</a>
+						<br>
+						<button class="btn">Default Button</button> &nbsp; &nbsp;
 					</div>
 					<div id="fastclick" class="inline-block demo">
-						<button class="btn">FastClick</button>
+						<a class="btn" href="javascript:;">Fastclick Link</a>
+						<br>
+						<button class="btn">FastClick Button</button>
 					</div>
 					<pre style="margin-top: 3em;"><code data-trim contenteditable class="javascript"
 >document.addEventListener('DOMContentLoaded', function() {
-//enable FastClick
-FastClick.attach(document.body);
+    //enable FastClick
+    FastClick.attach(document.body);
 
-document.getElementById('fastclick-btn').addEventListener('click', function(e) {
-    alert( 'Button ' + e.target.textContent + ' is clicked' );
-});
+    document.getElementById('fastclick-btn').addEventListener('click', function(e) {
+        alert( 'Button ' + e.target.textContent + ' is clicked' );
+    });
 });
 					</code></pre>
-
+					<p><small>Link: <a href="https://github.com/ftlabs/fastclick">FastClick library</a></small></p>
 					<script>
 						forEach.call($('#delayed-click .btn,#fastclick .btn'), function(btn) {
 							btn.addEventListener('click', function(e) {
-								alert('Button ' + e.target.textContent + ' is clicked');
+								alert(e.target.textContent + ' is clicked');
 							});
 						});
 					</script>
@@ -500,13 +542,13 @@ document.getElementById('fastclick-btn').addEventListener('click', function(e) {
 					</div>
 					<pre><code data-trim contenteditable class="css"
 >.scroll-box {
-width: 200px;
-height: 200px;
-overflow-y: scroll; /* has to be scroll, not auto */
+	width: 200px;
+	height: 200px;
+	overflow-y: scroll; /* has to be scroll, not auto */
 }
 
 .touch {
--webkit-overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
 }
 					</code></pre>
 				</section>
@@ -565,7 +607,7 @@ scrollBox.addEventListener('scroll', function() {
 }
 
 .menu:hover .submenu {
-	height: 400%; /* there 4 items */
+	height: 400%; /* there are 4 items */
 	opacity: 1;
 }							</code></pre>
 						</li>
@@ -589,7 +631,7 @@ scrollBox.addEventListener('scroll', function() {
 				</section>
 
 				<section>
-					<p>Put</p>
+					<p>Push</p>
 					<h2>Web App Optimization</h2>
 					<p>To The Next Level</p>
 
@@ -649,8 +691,8 @@ scrollBox.addEventListener('scroll', function() {
 						<li class="fragment">Reduce number of DOM objects -> less elements, simplify structure</li>
 						<li class="fragment">Optimize jQuery, vanilla JS is preferred</li>
 						<li class="fragment">Rendering / drawing optimization</li>
-						<li class="fragment">Avoid / supress touch event listeners where possible</li>
-						<li class="fragment">Avoid abusive use of visual effects</li>
+						<li class="fragment">Avoid / suppress touch event listeners where possible</li>
+						<li class="fragment">Avoid too much visual effects</li>
 						<li class="fragment">Put HWA tricks to good use</li>
 						<li class="fragment">Use CSS animation instead of JS' animate script*</li>
 						<li class="fragment">Use <code>requestAnimationFrame</code> instead of <code>setInterval</code>*</li>
@@ -667,12 +709,12 @@ scrollBox.addEventListener('scroll', function() {
 
 				<section>
 					<h3>Chrome Simulation</h3>
-					<p>[Screenshot needed]</p>
+					<p>Demo</p>
 				</section>
 
 				<section>
 					<h3>Adobe Edge Inspect</h3>
-					<p>[Screenshot Needed]</p>
+					<p>Demo</p>
 				</section>
 
 				<section>
@@ -684,9 +726,11 @@ scrollBox.addEventListener('scroll', function() {
 					<h2>Mobile UI Frameworks, YES or NO?</h2>
 					<h3>Some welknown Mobile Frameworks:</h3>
 					<ul>
-						<li>Kendo UI</li>
-						<li>SenchaTouch</li>
-						<li>jQuery Mobile</li>
+						<li><a href="http://www.telerik.com/kendo-ui">Kendo UI</a></li>
+						<li><a href="https://www.sencha.com/products/touch/">SenchaTouch</a></li>
+						<li><a href="http://dojotoolkit.org/features/mobile">Dojo Toolkit</a></li>
+						<li><a href="http://jquerymobile.com/">jQuery Mobile</a></li>
+						<li>...</li>
 					</ul>
 				</section>
 
@@ -695,22 +739,14 @@ scrollBox.addEventListener('scroll', function() {
 					<h3>Any questions?</h3>
 				</section>
 
-
-				<section>
-					<h2>References</h2>
-					<ul>
-						<li>FastClick: TBC</li>
-					</ul>
-				</section>
-
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 
 		<script>
+			var isSocketConnection = !!window.location.origin.match(':1947');
 
 			//prevent slide swiping interfere with some of the interactive elements
 			forEach.call(document.querySelectorAll('.no-swipe'), function(eachElement) {
@@ -742,8 +778,8 @@ scrollBox.addEventListener('scroll', function() {
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
 					//for remote server notes
-					{ src: 'socket.io/socket.io.js', async: true },
-					{ src: 'plugin/notes-server/client.js', async: true },
+					{ src: 'socket.io/socket.io.js', async: true, condition: function() { return isSocketConnection; } },
+					{ src: 'plugin/notes-server/client.js', async: true, condition: function() { return isSocketConnection; } },
 					//additional library for presentation
 					{ src: 'lib/js/fastclick.min.js', async: true, callback: function() {
 						// attach only this button to see the different
