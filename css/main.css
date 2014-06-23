@@ -156,3 +156,12 @@ label {
 	background: #eee;
 	border-bottom: 1px solid #888;
 }
+
+.presentation .inline-notes {
+	font-size: 0.5em;
+	font-style: italic;
+	color: #888;
+	position: absolute;
+	bottom: 0; /* should be changed in each slide*/
+	width: 100%;
+}
