@@ -57,13 +57,12 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
+
+					<a href="http://naustud.io"><img src="img/logo.svg" alt="Nau Studio" height="100" style="background: transparent;box-shadow: none;"></a>
 					<h1>Mobile Web App</h1>
 					<h3>Principles and Practical How-to</h3>
 					<p>
 						<small>Presented by <a href="http://int3ractive.com">Tran Trong Thanh</a> / <a href="http://twitter.com/trongthanh">@trongthanh</a></small><br>
-						<small>
-							<a href="http://naustud.io"><img src="http://naustud.io/img/nau-logo-100.png" alt="Nau Studio" height="80" style="background: transparent;box-shadow: none;"></a>
-						</small>
 					</p>
 					<aside class="inline-notes" style="bottom:-10em">This presentation is supposed to run on an iPad Retina for all demonstrations to work.</aside>
 				</section>
@@ -100,12 +99,14 @@
 					<h2>Major Mobile Web Browsers</h2>
 					<div class="inline-block">
 						<img src="img/mobile-browsers-stats.png" height="474" width="538" alt="Mobile Browser Stats"><br>
-						<small>Wekit based browsers ≈ 70%</small><br>
 						<small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201305-201405">StatCounter Global Stats - Browser Market Share</a></small>
 					</div>
+					<aside class="inline-notes" style="bottom: -2em">
+						This presentation is not intended to deal with the complicated fragmentation of mobile browsers and rendering engines.<br>Generally, I'm focusing on iOS and Android browsers only and a little of IE Mobile.
+					</aside>
 					<aside class="notes">
 						This presentation is not intended to deal with the complicated fragmentation of mobile browsers and rendering engines.<br>
-						Note on UC Browser: it's a proxy China-based browsers, its high volume is due to the fact it is used by many Chinese<br>
+						Note on UC Browser: it's a China-based proxy browsers, its high volume is due to the fact it is used by many Chinese<br>
 						Generally, we'll focus on Android, iOS &amp; Window Phones mobile browsers
 					</aside>
 				</section>
@@ -116,8 +117,8 @@
 						<li class="fragment">HTML5 &amp; CSS3</li>
 						<li class="fragment">Responsive Web Design (RWD)</li>
 						<li class="fragment">Touch Interface</li>
-						<li class="fragment">Web App Optimization</li>
-						<li class="fragment">Real Device Testing</li>
+						<li class="fragment">Optimization</li>
+						<li class="fragment">Testing</li>
 					</ul>
 
 					<aside class="notes">
@@ -141,9 +142,6 @@
 						<li>Animations for state transitions</li>
 						<li>UI decorations with shadows, border radius, gradients, filter...</li>
 					</ul>
-					<aside class="notes">
-						CSS3: background and border effects, transition and animation for better interface<br>
-					</aside>
 				</section>
 
 				<section>
@@ -157,7 +155,7 @@
 							<label style="width: 2.7em">Month:</label> <input type="month"><br>
 						</div>
 						<div class="inline-block left-align" style="width:45%">
-							<label style="width: 3em">Range:</label> <input type="range" class="no-swipe" style="width: 70%"><br>
+							<label style="width: 3em">Range*:</label> <input type="range" class="no-swipe" style="width: 70%"><br>
 							<label style="width: 3em">Select:</label>
 							<select name="demo-select" style="width: 70%">
 								<option value="">Jump To Section:</option>
@@ -181,7 +179,9 @@
 	&lt;/optgroup&gt;
 	...
 &lt;/select&gt;</code></pre>
-					<p><small>Link: <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/InputTypes.html">all built-in iOS Safari inputs</a></small></p>
+					<p><small>Link: <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/InputTypes.html">all built-in iOS Safari inputs</a><br>
+					* Range input is <a href="http://jsfiddle.net/leaverou/BNm8j/">customized with CSS</a> for better interaction.
+					</small></p>
 					<aside class="notes">
 						New HTML5 form inputs cut down the effort to customise component and interaction<br>
 						All built-in iOS Safari inputs: https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/InputTypes.html
@@ -256,6 +256,7 @@ input, textarea {
 	transform: translateY(2px); /* browser prefix needed */
 }
 </code></pre>
+					<p><small>Link: <a href="http://phonegap-tips.com/articles/essential-phonegap-css-webkit-tap-highlight-color.html">WebKit Tap Highlight Color</a></small></p>
 					<script>
 						forEach.call($('.tap-highlight .clickable'), function(el) {
 							el.addEventListener('click', function() {
@@ -275,7 +276,6 @@ input, textarea {
 						<li><a href="http://codepen.io/paulirish/full/nkwKs/">Demo: <code>position</code> with <code>top/left</code></a></li>
 						<li><a href="http://codepen.io/paulirish/full/LsxyF/">Demo: <code>transform: translate</code></a></li>
 					</ul>
-					<p><small>Source: <a href="http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/" target="_blank">Why Moving Elements With Translate() Is Better Than Pos:abs Top/left</a></small></p>
 					<pre><code class="css"
 >/* Enable HWA on a particular element */
 .hwa {
@@ -285,6 +285,8 @@ input, textarea {
 	transform: translate3d(0, 0, 0);
 }
 					</code></pre>
+					<p><small>Note: only use HWA rendering when needed.<br>Overuse may cause GPU memory shortage and result in crash/hang.</small></p>
+					<p><small>Source: <a href="http://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/" target="_blank">Why Moving Elements With Translate() Is Better Than Pos:abs Top/left</a></small></p>
 				</section>
 
 				<section>
@@ -295,7 +297,7 @@ input, textarea {
 						<li>Battery Status Events</li>
 						<li>Vibration API</li>
 						<li>Abient Light Events</li>
-						<li>Network Info API (Phonegap</li>
+						<li>Network Info API (currently Phonegap)</li>
 						<li>...</li>
 					</ul>
 				</section>
@@ -348,7 +350,9 @@ input, textarea {
 				<section>
 					<h3>Common Practices</h3>
 					<ul>
-						<li>Avoid fix size unit (i.e: px, pt)</li>
+						<li>Avoid absolute units (i.e: px, pt)</li>
+						<li>Try to make layout fluid with %</li>
+						<li>Try to make components scalable with 'em'</li>
 						<li>Use a mobile-friendly grid framework</li>
 					</ul>
 				</section>
@@ -372,10 +376,10 @@ input, textarea {
 &lt;/head&gt;
 
 					</code></pre>
-					<ul>
-						<li><small>Link: <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html">iOS Safari supported meta tags</a></small></li>
-						<li><small>Link: <a href="http://html5boilerplate.com/mobile/">Mobile Boilerplate</a></small></li>
-					</ul>
+					<p>
+						<small>Link: <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html">iOS Safari supported meta tags</a><br>
+						Link: <a href="http://html5boilerplate.com/mobile/">Mobile Boilerplate</a></small>
+					</p>
 				</section>
 
 				<section>
@@ -631,7 +635,8 @@ scrollBox.addEventListener('scroll', function() {
 					<h3>Design for Touch Friendly Interface</h3>
 					<ul>
 						<li>Minimal touch area is 40px</li>
-						<li>Mind the way users holding the screen (Read The Mobile Book)</li>
+						<li>Mind the way users holding the screen</li>
+						<li>Read <a href="https://shop.smashingmagazine.com/the-mobile-book-deluxe-bundle.html">The Mobile Book</a></li>
 						<li>Maximize interface for content</li>
 					</ul>
 				</section>
@@ -649,7 +654,7 @@ scrollBox.addEventListener('scroll', function() {
 				<section>
 					<h3>Reduce The Size of Resource Transfered to Device</h3>
 					<ul>
-						<li class="fragment">Practice page load optimization</li>
+						<li class="fragment">Practice <a href="https://developers.google.com/speed/">page load optimization</a></li>
 						<li class="fragment">
 							Avoid big, legacy libraries<br>
 							<small>Examples: </small>
@@ -703,7 +708,7 @@ scrollBox.addEventListener('scroll', function() {
 						<li class="fragment">Use CSS animation instead of JS' animate script*</li>
 						<li class="fragment">Use <code>requestAnimationFrame</code> instead of <code>setInterval</code>*</li>
 					</ul>
-					<p class="fragment"><small>* A good animation library like GSAP will help using the best approach</small></p>
+					<p class="fragment"><small>* A good animation library like <a href="http://www.greensock.com/gsap-js/">GSAP</a> will help using the best approach</small></p>
 					<aside class="notes">
 						Shadows, gradients are known to cause performance and UI janks. HWA tricks will overcome but GPU memory is limited.
 					</aside>
@@ -725,7 +730,8 @@ scrollBox.addEventListener('scroll', function() {
 
 				<section>
 					<h3>Real Device Testing with Debugger</h3>
-					<p>Safari developer demo</p>
+					<p>iOS Safari with OSX Safari developer tool demo</p>
+					<p>Android Chrome with desktop Chrome devtool demo</p>
 				</section>
 
 				<section>
@@ -736,13 +742,22 @@ scrollBox.addEventListener('scroll', function() {
 						<li><a href="https://www.sencha.com/products/touch/">SenchaTouch</a></li>
 						<li><a href="http://dojotoolkit.org/features/mobile">Dojo Toolkit</a></li>
 						<li><a href="http://jquerymobile.com/">jQuery Mobile</a></li>
-						<li>...</li>
 					</ul>
 				</section>
 
 				<section>
 					<h1>Thank you!</h1>
 					<h3>Any questions?</h3>
+				</section>
+
+				<section>
+					<h4>About</h4>
+					<p><small>
+						This presentation was first presented in June 2014 by <a href="http://int3ractive.com">Thanh Tran</a> for Nau Studio team.<br><br>
+						The slides is powered by <a href="https://github.com/hakimel/reveal.js/">RevealJS presentation framework</a> with a modified Beige theme.<br>
+						Source code of the slides is available on <a href="https://github.com/trongthanh/mobile-web-app-howto">github</a>.<br><br>
+						&copy; 2014 <a href="http://naustud.io">Nau Studio</a>. All rights reserved.
+					</small></p>
 				</section>
 
 			</div>
