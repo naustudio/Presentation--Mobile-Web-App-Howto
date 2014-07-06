@@ -40,7 +40,12 @@
 			}
 
 			//get a shortcut of forEach proto
-			var forEach = Array.prototype.forEach;
+			var forEach;
+			if ('forEach' in Array.prototype) {
+				var forEach = Array.prototype.forEach;
+			} else {
+				console.error('This presentation requires Array.prototype.forEach');
+			}
 			/*global Reveal, FastClick, hljs*/
 
 		</script>
@@ -767,14 +772,19 @@ scrollBox.addEventListener('scroll', function() {
 		<script src="js/reveal.min.js"></script>
 
 		<script>
-			var isSocketConnection = !!window.location.origin.match(':1947');
+			try {
 
-			//prevent slide swiping interfere with some of the interactive elements
-			forEach.call(document.querySelectorAll('.no-swipe'), function(eachElement) {
-				eachElement.addEventListener('touchmove', function(e) {
-					e.stopPropagation();
+				var isSocketConnection = !!window.location.href.match(':1947');
+
+				//prevent slide swiping interfere with some of the interactive elements
+				forEach.call(document.querySelectorAll('.no-swipe'), function(eachElement) {
+					eachElement.addEventListener('touchmove', function(e) {
+						e.stopPropagation();
+					});
 				});
-			});
+			} catch (err) {
+				console.error('JS compatibility error:', err);
+			}
 
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
