@@ -103,8 +103,8 @@
 				<section>
 					<h2>Major Mobile Web Browsers</h2>
 					<div class="inline-block">
-						<img src="img/mobile-browsers-stats.png" height="474" width="538" alt="Mobile Browser Stats"><br>
-						<small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201305-201405">StatCounter Global Stats - Browser Market Share</a></small>
+						<img src="img/mobile-browsers-stats.png" height="455" width="646" alt="Mobile Browser Stats"><br>
+						<small>Source: <a href="http://gs.statcounter.com/#mobile+tablet-browser-ww-monthly-201412-201512">StatCounter Global Stats - Browser Market Share</a></small>
 					</div>
 					<aside class="inline-notes" style="bottom: -2em">
 						This presentation is not intended to deal with the complicated fragmentation of mobile browsers and rendering engines.<br>Generally, I'm focusing on iOS and Android browsers only and a little of IE Mobile.
@@ -344,7 +344,7 @@ input, textarea {
 
 				<section>
 					<h3>Device Orientation API Demo</h3>
-					<a href="http://girliemac.com/magic8ball/">http://girliemac.com/magic8ball/</a>
+					<a href="http://girliemac.com/magic8ball/">http://girliemac.com/magic8ball/</a><br>
 				</section>
 
 				<section>
@@ -357,8 +357,10 @@ input, textarea {
 					<ul>
 						<li>Avoid absolute units (i.e: px, pt)</li>
 						<li>Try to make layout fluid with %</li>
-						<li>Try to make components scalable with 'em'</li>
+						<li>Try to make components scalable with <code>em, rem</code></li>
+						<li>Make use of new size units: <code>vh, vw, vmin, vmax</code></li>
 						<li>Use a mobile-friendly grid framework</li>
+						<li>Layout with Flexbox</li>
 					</ul>
 				</section>
 
@@ -422,7 +424,7 @@ input, textarea {
 				</section>
 
 				<section>
-					<p>You Can't Avoid</p>
+					<p>You Must Embrace</p>
 					<h2>Touch Interface</h2>
 				</section>
 
@@ -525,15 +527,20 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
     FastClick.attach(document.body);
 
     document.getElementById('fastclick-btn').addEventListener('click', function(e) {
-        alert( 'Button ' + e.target.textContent + ' is clicked' );
+        clickNote.textContent += 'Click! ';
     });
 });
 					</code></pre>
-					<p><small>Link: <a href="https://github.com/ftlabs/fastclick">FastClick library</a></small></p>
+					<p><small>
+						Link: <a href="https://github.com/ftlabs/fastclick">FastClick library</a><br>
+						Update: <a href="http://developer.telerik.com/featured/300-ms-click-delay-ios-8/">New workarounds for 300ms delay on major mobile browsers</a>
+					</small></p>
+					<p><small id="click-notification"></small></p>
 					<script>
+						var clickNote = document.getElementById('click-notification');
 						forEach.call($('#delayed-click .btn,#fastclick .btn'), function(btn) {
 							btn.addEventListener('click', function(e) {
-								alert(e.target.textContent + ' is clicked');
+								clickNote.textContent += 'Click! ';
 							});
 						});
 					</script>
@@ -568,7 +575,9 @@ document.getElementById('foo').addEventListener(POINTER_END, function() {
 					</code></pre>
 				</section>
 				<section>
-					<h3>iOS scroll Events Not Dispatched on Momentum</h3>
+					<h3><s style="font-size:0.7em">iOS scroll Events Not Dispatched on Momentum</s><br>
+						It finally works on iOS8!
+					</h3>
 					<div class="demo left-align">
 						<div id="scroll-box" class="scroll-box touch no-swipe" style="margin-left: 15%">
 							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
@@ -640,9 +649,13 @@ scrollBox.addEventListener('scroll', function() {
 					<h3>Design for Touch Friendly Interface</h3>
 					<ul>
 						<li>Minimal touch area is 40px</li>
+						<li>Mind that there is no hover state on mobile</li>
 						<li>Mind the way users holding the screen</li>
-						<li>Read <a href="https://shop.smashingmagazine.com/the-mobile-book-deluxe-bundle.html">The Mobile Book</a></li>
+						<li>Avoid hidden gestures without visual cues or fallback actions</li>
+						<li>Always assume that mobile users have limited data</li>
 						<li>Maximize interface for content</li>
+						<li>Read <a href="https://shop.smashingmagazine.com/the-mobile-book-deluxe-bundle.html">The Mobile Book</a></li>
+						<li>Read Don't Make Me Think - 3rd Edition</li>
 					</ul>
 				</section>
 
@@ -758,10 +771,19 @@ scrollBox.addEventListener('scroll', function() {
 				<section>
 					<h4>About</h4>
 					<p><small>
-						This presentation was first presented in June 2014 by <a href="http://int3ractive.com">Thanh Tran</a> for Nau Studio team.<br><br>
-						The slides is powered by <a href="https://github.com/hakimel/reveal.js/">RevealJS presentation framework</a> with a modified Beige theme.<br>
-						Source code of the slides is available on <a href="https://github.com/trongthanh/mobile-web-app-howto">github</a>.<br><br>
-						&copy; 2014 <a href="http://naustud.io">Nau Studio</a>. All rights reserved.
+						This presentation was first presented in June 2014 by <a href="http://int3ractive.com">Thanh Tran</a> for Nau Studio team.
+						<br>
+						Revised first time on January 2016
+						<br><br>
+					</small></p>
+					<p><small>
+						The slides is powered by <a href="https://github.com/hakimel/reveal.js/">RevealJS presentation framework</a> with a modified Beige theme.
+						<br>
+						Source code of the slides is available on <a href="https://github.com/trongthanh/mobile-web-app-howto">github</a>.
+						<br><br>
+					</small></p>
+					<p><small>
+						&copy; 2016 <a href="http://naustud.io">Nau Studio</a>. All rights reserved.
 					</small></p>
 				</section>
 
